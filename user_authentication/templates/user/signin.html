@@ -1,0 +1,14 @@
+{% block content %}
+<h2>Sign in</h2>
+<form action="{% url 'user_authentication:check_data' %}" method="post">
+{% csrf_token %}
+<p>Enter email
+   <input type="email" name="email" required>
+</p>
+<p>Enter password
+    <input type="password" name="pass" required>
+</p>
+    <input type="submit" value="Sign In ">
+</form>
+{% endblock %}
+

@@ -1,0 +1,22 @@
+{% block content %}
+  <h2>Profile</h2> 
+    {% csrf_token %}
+<p>User Profile</p>
+<ul>
+      <li><p>User name : {{ o.name}}</p></li>
+      <li><p>Email     : {{ o.email}}</li></p>
+  </ul>
+
+
+<form action="{% url 'user_authentication:ChangeProfile' o.id %}" method="post">
+{% csrf_token %}
+<input type="submit" value="Change Profile">
+</form>
+
+
+<form action="{% url 'tweets:home' o.id %}" method="post">
+    {% csrf_token %}
+<input type="submit" value="Home">
+</form>
+{% endblock %}
+

@@ -1,0 +1,15 @@
+{% block content %}
+  <h2>Found user details </h2> 
+ <p> User name : {{ o.name}} <p>
+
+<p> User name : {{ a.name}} <p>
+<p> User email : {{ a.email}} <p>
+
+<form action="{% url 'tweets:followuser' o.id a.id%}" method="post">
+    {% csrf_token %}
+<input type="submit" value="Follow">
+</form>
+
+
+
+{% endblock %}

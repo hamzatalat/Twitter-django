@@ -1,0 +1,23 @@
+{% block content %}
+  <h2>Edit profile </h2> 
+    {% csrf_token %}
+<p> You must fill all the fields </p>
+<form action="{% url 'user_authentication:updatedata' ids %}" method="post">
+    {% csrf_token %}    
+	<p>Enter new name
+	    <input type="text" name="u_name" id="u_name">
+	</p>
+	<p>Enter new email 
+	   <input type="text" name="email_">
+	</p>
+	<p>Enter new password 
+	    <input type="text" name="pass_">
+	</p>
+  
+	<input type="submit" value="Save">
+  </form>
+
+
+
+{% endblock %}
+

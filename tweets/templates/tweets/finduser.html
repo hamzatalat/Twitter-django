@@ -1,0 +1,14 @@
+{% block content %}
+  <h2>Find User</h2> 
+ <p1> User name : {{ o.name}} <p1>
+
+<form action="{% url 'tweets:fonduser' o.id %}" method="post">
+    {% csrf_token %}
+<p>
+<input type="text" name="find_user">
+</p>
+<input type="submit" value="Find User">
+</form>
+
+{% endblock %}
+

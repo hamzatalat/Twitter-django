@@ -1,0 +1,77 @@
+{% block content %}
+  <h1>View Tweets</h1> 
+ <p1> User name : {{ o.name}} <p1>
+
+
+<ul>
+    {% for question in o.tweets_set.all %}
+        <h2><p> {{ o.name }} : </p></h2>
+	<p>{{ question.tweet }}</p>
+	<h3> Comments </h3>
+	{% for com in question.comments_set.all %}
+
+			<p>{{ com.comment }}</p>
+	{% endfor %}
+
+
+
+	<form action="{% url 'tweets:liketweet' o.id question.tweet  %}" method="post">
+	    {% csrf_token %}
+		<input type="submit" value="like">
+	</form>
+	<form action="{% url 'tweets:commenttweet' o.id question.tweet %}" method="post">
+	    {% csrf_token %}
+		<p>
+			<input type="text" name="comment">
+		</p>
+		<input type="submit" value="Comment">
+	</form>
+
+    {% endfor %}
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<ul>
+    {% for itr in a %}
+	{% for question in itr.tweets_set.all %}
+        <h2><p> {{ itr.name }} : </p></h2>
+	<p>{{ question.tweet }}</p>
+	
+	<h3> Comments</h3>
+	{% for com in question.comments_set.all %}
+		<p>{{ com.comment }}</p>
+
+	{% endfor %}
+
+
+
+
+	
+	<form action="{% url 'tweets:liketweet' o.id question.tweet %}" method="post">
+	    {% csrf_token %}
+		<input type="submit" value="like">
+	</form>
+	<form action="{% url 'tweets:commenttweet' o.id question.tweet  %}" method="post">
+	    {% csrf_token %}
+		<p>
+			<input type="text" name="comment">
+		</p>
+		<input type="submit" value="Comment">
+	</form>
+    {% endfor %}
+    {% endfor %}
+</ul>
+
+
+{% endblock %}
+

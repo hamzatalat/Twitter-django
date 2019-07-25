@@ -1,0 +1,26 @@
+{% block content %}
+  <h2>Home</h2> 
+ <p1> User name : {{ o.name}} <p1>
+
+
+<p>
+<form action="{% url 'tweets:posttweet' o.id %}" method="post">
+    {% csrf_token %}
+<input type="submit" value="Write Tweet">
+</form>
+</p>
+
+
+<form action="{% url 'tweets:viewtweets' o.id %}" method="post">
+    {% csrf_token %}
+<input type="submit" value="View Tweet">
+</form>
+
+<form action="{% url 'tweets:finduser' o.id %}" method="post">
+    {% csrf_token %}
+<input type="submit" value="Find">
+</form>
+
+
+{% endblock %}
+
